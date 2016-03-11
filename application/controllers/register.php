@@ -7,6 +7,7 @@ class register extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->library('email');
 		$this->load->helper('form');
 		$this->load->model('registerModel');
 	}
@@ -75,13 +76,13 @@ class register extends CI_Controller {
 							if($playername[$m] != ''){
 								$this->store_players($playername[$m],$contact[$m],$playeremail[$m],$id);
 							}
-						}			        	
+						}
+
+						$this->email_client($email);
+						$this->emaail_admin();
 			        }
 		        }
-
-
 			}
-
 		}
 		$this->load->view('register', $this->data);
 	}
@@ -93,5 +94,25 @@ class register extends CI_Controller {
 
 	private function store_players($playername,$contact = '',$playeremail = '',$id){
 		$this->registerModel->storePlayer($playername,$contact,$playeremail,$id);
+	}
+
+	private function email_client($email){
+		$this->email->set_newline("\r\n");
+		$this->email->from('kelvin.tres@yahoo.com', 'ManilaFunCup');
+		$this->email->to($email); 
+		$this->email->subject('Email to client');
+		$this->email->message('Testing the email class with config3.');	
+		$this->email->send();	
+		// echo $this->email->print_debugger();
+	}
+
+	private function emaail_admin(){
+		$this->email->set_newline("\r\n");
+		$this->email->from('kelvin.tres@yahoo.com', 'ManilaFunCup');
+		$this->email->to('kelvin.tres@yahoo.com'); 
+		$this->email->subject('Email to admin');
+		$this->email->message('Testing the email class with config3.');	
+		$this->email->send();	
+		// echo $this->email->print_debugger();
 	}
 }
