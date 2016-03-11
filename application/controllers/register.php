@@ -10,7 +10,7 @@ class register extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('registerModel');
 	}
-
+ 
 	public function index(){
 		$this->data['title'] = "Registration Form";
 
