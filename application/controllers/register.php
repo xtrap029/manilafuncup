@@ -80,6 +80,8 @@ class register extends CI_Controller {
 
 						$this->email_client($email);
 						$this->emaail_admin();
+
+						// redirect goes here
 			        }
 		        }
 			}
