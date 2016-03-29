@@ -15,6 +15,21 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/vendor/animate.css/animate.css"/>
     <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/vendor/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/vendor/toastr/toastr.min.css"/>
+    <?php
+    if(isset($menu)){
+        if($menu == "reg" || $menu == "team"){
+        ?>
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/vendor/datatables/datatables.min.css"/>
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/vendor/toastr/toastr.min.css">
+        <?php
+        }
+        elseif($menu == "dash"){
+        ?>
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/timecircle/TimeCircles.css">
+        <?php
+        }
+    }
+    ?>
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/luna_theme/styles/pe-icons/pe-icon-7-stroke.css"/>
@@ -61,62 +76,19 @@
     <aside class="navigation">
         <nav>
             <ul class="nav luna-nav">
-                <li class="nav-category">
-                    Main
-                </li>
-                <li class="active">
+                <li class="nav-category">Main</li>
+                <li class="<?php if(isset($menu)) echo $menu == 'dash' ? 'active' : '';?>">
                     <a href="<?php echo base_url();?>cms/dashboard">Dashboard</a>
                 </li>
-
-                <li>
-                    <a href="#monitoring" data-toggle="collapse" aria-expanded="false">
-                        Monitoring<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
+                <li class="<?php if(isset($menu)) echo $menu == 'reg' ? 'active' : '';?>">
+                    <a href="<?php echo base_url();?>cms/registration">
+                        Registrations
                     </a>
-                    <ul id="monitoring" class="nav nav-second collapse">
-                        <li><a href="metrics.html"> Metrics</a></li>
-                        <li><a href="usage.html"> Usage</a></li>
-                        <li><a href="activity.html"> Activity</a></li>
-                    </ul>
                 </li>
-                <li class="nav-category">
-                    UI Elements
-                </li>
-                <li>
-                    <a href="#uielements" data-toggle="collapse" aria-expanded="false">
-                        General<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
+                <li class="<?php if(isset($menu)) echo $menu == 'team' ? 'active' : '';?>">
+                    <a href="<?php echo base_url();?>cms/team">
+                        Playing Teams
                     </a>
-                    <ul id="uielements" class="nav nav-second collapse">
-                        <li><a href="panels.html">Panels</a></li>
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="icons.html">Icons</a></li>
-                        <li><a href="buttons.html">Buttons</a></li>
-                        <li><a href="tabs.html">Tabs</a></li>
-                        <li><a href="modals.html">Modals</a></li>
-                        <li><a href="alerts.html">Alerts</a></li>
-                        <li><a href="gridSystem.html">Grid system</a></li>
-                        <li><a href="draggable.html">Draggable</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#tables" data-toggle="collapse" aria-expanded="false">
-                        Tables design<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
-                    </a>
-                    <ul id="tables" class="nav nav-second collapse">
-                        <li><a href="tableStyles.html">Table styles</a></li>
-                        <li><a href="dataTables.html">Data Tables</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="formElements.html"> Form elements </a>
-                </li>
-                <li>
-                    <a href="#charts" data-toggle="collapse" aria-expanded="false">
-                        Charts and graphs<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
-                    </a>
-                    <ul id="charts" class="nav nav-second collapse">
-                        <li><a href="flotCharts.html">Flot charts</a></li>
-                        <li><a href="sparkline.html">Sparkline</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-category">
